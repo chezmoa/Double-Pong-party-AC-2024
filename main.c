@@ -50,7 +50,6 @@ void clean_screen(void)
 {
  // printf("                                                                                                                                                                                                                                                                                                                                                                        ");
 printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-
 }
 
 void setup_sprites()
@@ -104,12 +103,15 @@ void main(void)
 restart:
   printf("\n\n\n\n\n   Pour jouer avec\n   Xirius et Nhut\n    appuie sur A\n\n\n   Pour jouer avec\n    Fei et Marie\n    appuie sur B\n\n\n\n\n");
     key = waitpad(J_A | J_B);
-    if (key & J_A) {
+    if (key & J_A) 
+    {
         NOMJ1 = "Xirius";
         NOMJ2 = "Nhut";
         point_typej1 = SPRITE_VERRE;
         point_typej2 = SPRITE_VERRE2;
-    } else if (key & J_B) {
+    }
+    else if (key & J_B) 
+    {
         NOMJ1 = "Fei";
         NOMJ2 = "Marie";
         point_typej1 = SPRITE_SLIP;
@@ -120,8 +122,6 @@ restart:
 
   j1y=50;
   j2y=50;
-
-
 
   bouge_balle(100, 80);
 
@@ -141,7 +141,8 @@ restart:
         {
           j1y--;
           bouge_j1(j1y);
-        } else if ((keys & J_DOWN) && (j1y<(144-24))) 
+        }
+        else if ((keys & J_DOWN) && (j1y<(144-24))) 
         {
           j1y++;
           bouge_j1(j1y);
@@ -151,11 +152,11 @@ restart:
         {
           j2y--;
           bouge_j2(j2y);
-        } else if ((keys & J_B) && (j2y<(144-24))) {
-
+        } 
+        else if ((keys & J_B) && (j2y<(144-24))) 
+        {
           j2y++;
           bouge_j2(j2y);
-
         }
         //mouvevement balle
         BALL_X += BALL_DELTA_X;
@@ -180,7 +181,7 @@ restart:
 
         //colision balle J2
         if (((BALL_X+8) >= J2X) && (BALL_DELTA_X > 0) && (j2y < BALL_Y) && (BALL_Y < j2y+24))
-         {
+        {
           BALL_DELTA_X = -BALL_DELTA_X;
           NR10_REG = 0x00;
           NR11_REG = 0x81;
